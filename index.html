@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Pace Agency</title>
+    <style>
+        /* Navigation bar CSS */
+        nav {
+            background-color: #f8f3f3;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        /* Add a grey background color to dropdown links on hover */
+        nav a:hover {
+            background-color: #c4e771;
+            color: rgb(24, 236, 243);
+        }
+
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top">
+        <!-- Your header content here -->
+        <div class="marquee">
+          <marquee behavior="scroll" direction="left">WELCOME TO PACE AGENCY THE LEADING COMMUNICATION AND MEDIA PARTNER << >> OUR Vision: To instill trustworthy and sought-after public relations and brand reputation management agency, known for delivering exceptional results for our clients and building strong, enduring relationships with influencers and media outlets.Our mission is to provide strategic and innovative public relations services that enhance the reputation and credibility of our clients' brands. We are committed to nurturing meaningful partnerships with influencers and media professionals, leveraging their reach and influence to amplify our clients' messaging. Through compelling storytelling and expertly crafted press releases.</marquee>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h1>Global News</h1></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openDialog('Vision', 'Content for Vision goes hereVision: To instill trustworthy and sought-after public relations and brand reputation management agency, known for delivering exceptional results for our clients and building strong, enduring relationships with influencers and media outlets..')">Vision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openDialog('Mission', 'Mission: Our mission is to provide strategic and innovative public relations services that enhance the reputation and credibility of our clients\' brands. We are committed to nurturing meaningful partnerships with influencers and media professionals, leveraging their reach and influence to amplify our clients\' messaging. Through compelling storytelling and expertly crafted press releases.')">Mission</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openDialog('Contact Us', 'EMAIL: paceagency409@gmail.com\nPHONE: 0794276132\nFACEBOOK: https://www.facebook.com/profile.php?id=61556585366731\nYOUTUBE: https://youtube.com/@PaceAgency-254?si=C_DuGpRKVgSzFIJc\nINSTAGRAM: https://www.instagram.com/pace_agency_?igsh=MWw0MDF4bnI3OTJ1')">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openDialog('Objectives', 'Objective: To educate people on effective crisis management and the importance of safeguarding reputation.')">Objectives</a>
+                    </li>
+                </ul>
+                <div class="searchbar">
+                    <div class="input-group mb-3">
+                        <input type="text" id="searchword" class="form-control" placeholder="What are you looking for?"
+                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-danger" onclick="fetchnews()" type="button" id="button-addon2">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="news">
+        <div class="container-fluid posts" id="xyz"></div>
+    </div>
+
+    <footer class="footer">
+        <div class="container-fluid">
+           
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+
+    <script>
+        function openDialog(title, content) {
+            alert(title + ': ' + content);
+        }
+
+        var adurl = "./../JSON/adv.json";
+        $.get(adurl, (response1) => {
+            console.log(response1);
+            var html1 = `<div class="banner">
+                <a  href="${response1[0].url}">
+                  <img src="${response1[0].image}">
+                 </a></div>`
+            $(".wrapper").append(html1);
+        })
+
+        var adur2 = "./../JSON/adv2.json";
+        $.get(adur2, (response2) => {
+            console.log(response2);
+            var html2 = `<div class="banner1">
+                    <a  href="${response2[0].url}">
+                  <img src="${response2[0].image}">
+                    </a></div>`
+            $(".wrapper1").append(html2);
+        })
+        var adur3 = "./../JSON/ad3.json";
+        $.get(adur3, (response3) => {
+            console.log(response3);
+            var html3 = `<div class="banner2">
+                    <a  href="${response3[0].url}">
+                  <img src="${response3[0].image}">
+                    </a></div>`
+            $(".wrapper2").append(html3);
+        })
+
+        var adur4 = "./../JSON/adv6.json";
+        $.get(adur4, (response4) => {
+            console.log(response4);
+            var html4 = `<div class="banner3">
+                    <a  href="${response4[0].url}">
+                  <img src="${response4[0].image}">
+                    </a></div>`
+            $(".wrapper5").append(html4);
+        })
+
+        var adur5 = "./../JSON/adv5.json";
+        $.get(adur5, (response5) => {
+            console.log(response5);
+            var html5 = `<div class="banner4">
+                    <a  href="${response5[0].url}">
+                  <img src="${response5[0].image}">
+                    </a></div>`
+            $(".wrapper4").append(html5);
+        })
+
+        function fetchnews() {
+            var searchword = $("#searchword").val();
+            document.getElementById('xyz').innerHTML = "";
+            if (searchword == "") {
+                searchword = "kenya";
+            }
+            var url = "https://gnews.io/api/v4/search?q=" + searchword + "&token=7685af7d819eb1821cec487eb58b51d6";
+            $.get(url, (response) => {
+                console.log(response.articles);
+                for (i = 0; i < response.articles.length; i++) {
+                    var html = `<div class="card m-3 shadow">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="${response.articles[i].image}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">${response.articles[i].title}</h5>
+                                    <p class="card-text">${response.articles[i].description}</</p>
+                                    <p class="card-text"><small class="text-muted">${response.articles[i].publishedAt} || </small>
+                                    <small class="text-muted">${response.articles[i].source.name}</small></p>
+                                    <p><a href="${response.articles[i].url}" class="btn btn-secondary" target="-next">Read More</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                    $(".posts").append(html);
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
